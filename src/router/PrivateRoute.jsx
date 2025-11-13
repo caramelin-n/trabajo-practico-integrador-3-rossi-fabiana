@@ -12,23 +12,24 @@ const PrivateRoute = () => {
         try {
             setLoading(true);
             const profile = await fetch("http://localhost:3000/api/profile");
-            setLogged(!!profile)
+            console.log(profile)
+            if(!profile.ok){
+                setLogged(false)
+            }
+            if(profile.ok) {
+                setLogged(true)
+            }
         } catch (error) {
             console.log("Error a checkear el profile", error);
             setLogged(false);
         } finally {
             setLoading(false);
         }
-        checkLogged();
     }
+    checkLogged();
   },[])
-  if (loading){
     return (
-        <Loading/>
-    )
-  }
-    return (
-        isLogged ? (<Outlet/>) : <Navigate to={"/login"}/>
+        loading ? <Loading/> : (isLogged ? (<Outlet/>) : <Navigate to={"/login"}/>)
     )
 }
 

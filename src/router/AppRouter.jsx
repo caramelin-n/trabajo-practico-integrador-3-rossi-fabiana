@@ -7,9 +7,12 @@ import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 import Tasks from "../pages/Tasks";
 import Home from "../pages/Home";
+import { Navbar } from "../components/Navbar"
 
 const AppRouter = () => {
   return (
+    <>
+    <Navbar/>
     <Routes>
         <Route element={<PublicRoute/>}>
             <Route path="/login" element={<Login/>} />
@@ -24,6 +27,7 @@ const AppRouter = () => {
             <Route path="*" element={<Home/>} />
         </Route>
     </Routes>
+    </>
   )
 }
 
