@@ -11,7 +11,7 @@ const PrivateRoute = () => {
     const checkLogged = async () => {
         try {
             setLoading(true);
-            const profile = await fetch("http://localhost:3000/api/profile");
+            const profile = await fetch("http://localhost:3000/api/profile", { credentials: "include" });
             console.log(profile)
             if(!profile.ok){
                 setLogged(false)

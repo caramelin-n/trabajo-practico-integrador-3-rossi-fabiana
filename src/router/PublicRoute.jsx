@@ -11,7 +11,7 @@ const PublicRoute = () => {
     const checkLogged = async () => {
       try {
         setLoading(true);
-        const profile = await fetch("http://localhost:3000/api/profile");
+        const profile = await fetch("http://localhost:3000/api/profile", { credentials: "include" });
         if (!profile.ok) {
           setLogged(false);
         }

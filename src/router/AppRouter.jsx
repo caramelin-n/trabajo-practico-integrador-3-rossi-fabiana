@@ -6,8 +6,9 @@ import { Login } from "../pages/Login";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 import Tasks from "../pages/Tasks";
-import Home from "../pages/Home";
+import { Home } from "../pages/Home";
 import { Navbar } from "../components/Navbar"
+import { Footer } from "../components/Footer";
 
 const AppRouter = () => {
   return (
@@ -25,8 +26,10 @@ const AppRouter = () => {
             <Route path="/profile" element={<Profile/>} />
             <Route path="/tasks" element={<Tasks/>} />
             <Route path="*" element={<Home/>} />
+            <Route path="/" element={<Home/>} />
         </Route>
     </Routes>
+    <Footer/>
     </>
   )
 }

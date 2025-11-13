@@ -3,6 +3,7 @@ import { useForm } from "../hooks/useForm";
 import { Link } from "react-router";
 import { Loading } from "../components/Loading";
 import { useNavigate } from "react-router";
+
 export const Login = () => {
   const navigate = useNavigate();
   const { handleReset, handleChange, formValue } = useForm({
@@ -34,23 +35,23 @@ export const Login = () => {
           username: username,
           password: password,
         }),
+        credentials: "include",
       });
-      console.log(response);
       if (!response.message == "Login exitoso") {
         setLoading(false);
         setMessage("Credenciales inválidas.");
         return;
       }
       if (!response.ok) {
-        setLoading(false)
+        setLoading(false);
         setMessage("Credenciales inválidas.");
         return;
       }
-      if(response.ok){
-        setLoading(false)
-        setMessage("login exasasitoso")
-        navigate("/home")
-        return
+      if (response.ok) {
+        setLoading(false);
+        setMessage("Login exitoso.");
+        navigate("/home");
+        return;
       }
       if (response.message == "Login exitoso") {
         setLoading(false);
