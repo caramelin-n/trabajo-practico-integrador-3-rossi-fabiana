@@ -3,9 +3,9 @@ import { Route } from "react-router";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import { Login } from "../pages/Login";
-import Register from "../pages/Register";
-import Profile from "../pages/Profile";
-import Tasks from "../pages/Tasks";
+import { Register } from "../pages/Register";
+import  Profile  from "../pages/Profile";
+import { Tasks } from "../pages/Tasks";
 import { Home } from "../pages/Home";
 import { Navbar } from "../components/Navbar"
 import { Footer } from "../components/Footer";

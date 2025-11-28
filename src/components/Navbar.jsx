@@ -1,4 +1,3 @@
-import logo from '../assets/img/logo.webp'
 import { useEffect, useState } from 'react'
 
 export const Navbar = () => {
@@ -36,14 +35,16 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img src={logo} alt="Logo" className="h-12" />
+            <span className="text-xl md:text-2xl font-bold tracking-wide">
+              mi proyecto con react
+            </span>
           </div>
 
           {/* Menu Desktop */}
           { isLogged === true && (<div className="hidden md:flex space-x-8">
-            <a href="#" className="hover:text-white transition">Home</a>
-            <a href="#" className="hover:text-white transition">Tasks</a>
-            <a href="#" className="hover:text-white transition">Profile</a>
+            <a href="/" className="hover:text-white transition">Home</a>
+            <a href="/tasks" className="hover:text-white transition">Tasks</a>
+            <a href="/profile" className="hover:text-white transition">Profile</a>
           </div>)}
 
           {/* Botones Desktop */}
@@ -76,9 +77,9 @@ export const Navbar = () => {
         {/* Menu Mobile - Cuando está logeado */}
         {isOpen && isLogged === true && (
           <div className="md:hidden pb-4">
-            <a href="#" className="block py-2 hover:text-white transition">Home</a>
-            <a href="#" className="block py-2 hover:text-white transition">Tasks</a>
-            <a href="#" className="block py-2 hover:text-white transition">Profile</a>
+            <a href="/" className="block py-2 hover:text-white transition">Home</a>
+            <a href="/tasks" className="block py-2 hover:text-white transition">Tasks</a>
+            <a href="/profile" className="block py-2 hover:text-white transition">Profile</a>
             <button className="w-full mt-4 bg-white text-black px-4 py-2 rounded-md font-semibold hover:bg-yellow-50 transition">
               Logout
             </button>

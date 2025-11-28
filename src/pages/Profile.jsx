@@ -34,14 +34,22 @@ const Profile = () => {
       },[]);
 
   if(isLoading){
-    return(<Loading/>)
+    return(
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <Loading/>
+      </div>
+    )
   }
   return (
-    <div>
-      <h1>Perfil</h1>
-      <p>Id: {profile.id}</p>
-      <p>Nombre: {profile.name}</p>
-      <p>Apellido: {profile.lastname}</p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-md border border-gray-200">
+        <h1 className="text-4xl font-extrabold text-gray-800 mb-6 text-center">Perfil</h1>
+        <div className="space-y-4 text-gray-700">
+          <p className="text-lg"><span className="font-semibold text-yellow-600">Id:</span> {profile.id}</p>
+          <p className="text-lg"><span className="font-semibold text-yellow-600">Nombre:</span> {profile.name}</p>
+          <p className="text-lg"><span className="font-semibold text-yellow-600">Apellido:</span> {profile.lastname}</p>
+        </div>
+      </div>
     </div>
   )
 }

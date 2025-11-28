@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import {  useState } from "react";
 import { useForm } from "../hooks/useForm";
 import { Link } from "react-router";
 import { Loading } from "../components/Loading";
@@ -28,6 +28,7 @@ export const Login = () => {
       setLoading(true);
       const response = await fetch("http://localhost:3000/api/login", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -35,33 +36,30 @@ export const Login = () => {
           username: username,
           password: password,
         }),
-        credentials: "include",
       });
-      if (!response.message == "Login exitoso") {
-        setLoading(false);
-        setMessage("Credenciales inválidas.");
-        return;
-      }
+
+      const data = await response.json();
+
       if (!response.ok) {
         setLoading(false);
-        setMessage("Credenciales inválidas.");
+        setMessage(data.message || "Credenciales inválidas.");
         return;
       }
-      if (response.ok) {
+
+      if (data.message === "Login exitoso") {
         setLoading(false);
         setMessage("Login exitoso.");
         navigate("/home");
         return;
-      }
-      if (response.message == "Login exitoso") {
+      } else {
         setLoading(false);
-        setMessage("Login exitoso");
+        setMessage(data.message || "Credenciales inválidas.");
         return;
       }
     } catch (error) {
       setLoading(false);
       console.log(error);
-      setMessage("Error de conexión.");
+      setMessage("Error de conexión");
     }
   };
 
@@ -74,7 +72,7 @@ export const Login = () => {
           Login
         </h1>
 
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={submit}>
           <div>
             <label
               htmlFor="username"
@@ -113,7 +111,6 @@ export const Login = () => {
 
           <button
             type="submit"
-            onClick={submit}
             className="w-full bg-yellow-400 text-black font-semibold py-2 rounded-lg hover:bg-yellow-500 transition"
           >
             Iniciar Sesión
